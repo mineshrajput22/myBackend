@@ -1,10 +1,10 @@
 import books from '../../data/booksData.ts';
-import { type Book } from '../../types/book.ts';
+import type { Book } from '../../types/book.ts';
 
-export const getAllBooks = () => {
+export const getAllBooks = (): Book[] => {
 	return books;
 };
 
-export const getBookById = (id: number) : Book | undefined => {
+export const getBookById = (id: number): Book | undefined => {
 	return books.find((item) => item.id === id);
 };

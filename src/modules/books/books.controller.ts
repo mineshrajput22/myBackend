@@ -1,20 +1,16 @@
 import { type Request, type Response } from 'express';
 import { getAllBooks, getBookById } from './books.service.ts';
 
-export const getAll = (req: Request, res: Response) => {
-	try {
-		const bookData = getAllBooks();
+export const getAll = (req: Request, res: Response): void => {
+	const bookData = getAllBooks();
 
-		res.status(200).json({
-			success: true,
-			data: bookData,
-		});
-	} catch (error) {
-		throw new Error(`${error}`);
-	}
+	res.status(200).json({
+		success: true,
+		data: bookData,
+	});
 };
 
-export const getById = (req: Request, res: Response) => {
+export const getById = (req: Request<{ id: string }>, res: Response): void => {
 	const id = Number(req.params.id);
 
 	if (Number.isNaN(id)) {
