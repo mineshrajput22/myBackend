@@ -8,14 +8,14 @@ const app: Application = express();
 
 app.use(express.json());
 
-app.get('/health', (req: Request, res: Response) => {
-	res
-		.status(200)
-		.json({
-			status: 'OK',
-			timestamp: new Date().toISOString(),
-			message: 'Node + typescript server is running',
-		});
-});
+export const health = (req: Request, res: Response) => {
+	res.status(200).json({
+		status: 'ok',
+		message: 'Server is healthy',
+		timestamp: new Date().toISOString(),
+	});
+};
+
+app.get('/health', health);
 
 export default app;
