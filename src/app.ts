@@ -6,6 +6,7 @@ import express, {
 
 const app: Application = express();
 
+app.disable('x-powered-by')
 app.use(express.json());
 
 export const health = (req: Request, res: Response) => {
