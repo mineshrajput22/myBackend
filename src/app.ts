@@ -4,9 +4,11 @@ import express, {
 	type Response,
 } from 'express';
 
+import booksRouter from './modules/books/books.routes.ts';
+
 const app: Application = express();
 
-app.disable('x-powered-by')
+app.disable('x-powered-by');
 app.use(express.json());
 
 export const health = (req: Request, res: Response) => {
@@ -18,5 +20,7 @@ export const health = (req: Request, res: Response) => {
 };
 
 app.get('/health', health);
+
+app.use('/api/v1/books', booksRouter);
 
 export default app;
